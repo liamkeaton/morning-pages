@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <title>Focus</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    p:has(a:hover) > span {
+      filter: blur(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="w-screen h-screen flex items-center justify-center">
+    <p>
+      <span class="blur-3xl transition-all duration-500 cursor-default">When you try to</span>
+      <a href="#" class="font-serif italic text-3xl blur-none hover:blur-md transition-all duration-250">Focus</a>
+      <span class="blur-3xl transition-all duration-500 cursor-default">it just disappears</span>
+    </p>
+  </div>
+</body>
+</html>
