@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <title>Spark Joy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="w-screen h-screen flex items-center justify-center overflow-hidden relative">
+    <a href="#" id="spark" class="font-serif italic text-5xl z-10">Spark</a>
+  </div>
+  <script>
+    const container = document.querySelector('div');
+    const spark = document.getElementById('spark');
+    let overInterval;
+
+    spark.addEventListener('mouseover', () => {
+      overInterval = setInterval(() => {
+        createJoy();
+      });
+    });
+    spark.addEventListener('mouseout', () => {
+      clearInterval(overInterval);
+      killJoy();
+    });
+
+    function createJoy() {
+      const joy = document.createElement('span');
+      joy.innerText = 'JOY';
+      joy.classList.add('font-mono', 'font-black', 'text-xs', 'text-blue-500', 'absolute');
+      joy.style.top = `${Math.random() * 100}vh`;
+      joy.style.left = `${Math.random() * 100}vw`;
+      container.appendChild(joy);
+    }
+    function killJoy() {
+      const joys = document.querySelectorAll('span');
+      joys.forEach(joy => joy.remove());
+    }
+  </script>
+</body>
+</html>
