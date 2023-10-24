@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>Torch</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #torch {
+        clip-path: circle(0.5% at 50% 50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="w-screen h-screen flex items-center justify-center bg-black z-10">
+    <div id="torch" class="absolute w-screen h-screen bg-white z-20"></div>
+    <div class="text-5xl font-serif italic text-black select-none z-30">Torch</div>
+  </div>
+  <script>
+    const torch = document.getElementById('torch');
+    let shine = false;
+    let x = 0;
+    let y = 0;
+
+    document.addEventListener('mousedown', (e) => shineAndMove(e, true));
+    document.addEventListener('mouseup', (e) => shineAndMove(e, false));
+    document.addEventListener('touchstart', (e) => shineAndMove(e, true));
+    document.addEventListener('touchend', (e) => shineAndMove(e, false));
+    document.addEventListener('touchmove', (e) => moveTorch(e));
+    document.addEventListener('mousemove', (e) => moveTorch(e));
+
+    function shineAndMove(e, s) {
+      shine = s;
+      moveTorch(e);
+    }
+
+    function moveTorch(e) {
+      if (e.touches) e = e.touches[0];
+      if (e && e.clientX) x = e.clientX;
+      if (e && e.clientY) y = e.clientY;
+      torch.style.clipPath = `circle(${shine ? '5%' : '0.5%'} at ${x}px ${y}px)`;
+    }
+  </script>
+</body>
+</html>
